@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Mate y Código",
+  "classifications": [
+    "Web",
+    "Microservice",
+    "CleanArchitecture",
+    "SOLID"
+  ],
+  "identity": "MateyCodigo.Microservice.Template",
+  "name": "Microservice Clean Architecture (SOLID)",
+  "shortName": "microservice",
+  "sourceName": "MyMicroservice",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "description": "Template base para microservicios desarrollado por Mate y Código siguiendo principios SOLID y Clean Architecture.",
+  "symbols": {
+    "useDocker": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Indica si el proyecto debe incluir soporte para Docker (Dockerfile y docker-compose)."
+    },
+    "includeTests": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Incluye un proyecto de pruebas unitarias base."
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!useDocker)",
+          "exclude": [
+            "Dockerfile",
+            "docker-compose.yml"
+          ]
+        },
+        {
+          "condition": "(!includeTests)",
+          "exclude": [
+            "tests/**"
+          ]
+        }
+      ]
+    }
+  ]
+}
