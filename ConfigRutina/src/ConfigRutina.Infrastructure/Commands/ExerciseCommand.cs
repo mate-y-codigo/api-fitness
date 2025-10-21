@@ -4,6 +4,7 @@ using ConfigRutina.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,18 @@ namespace ConfigRutina.Infrastructure.Commands
 
         public async Task Delete(Ejercicio exercise)
         {
-            _configRutinaDB.Ejercicios.Remove(exercise);
-            await _configRutinaDB.SaveChangesAsync();
+            if (await _configRutinaDB.EjercicioSesiones.AnyAsync())
+            {
+                await _configRutinaDB.Ejercicios
+                    .Where(d => d.Id == exercise.Id)
+                    .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(e => e.Activo, e => false));
+            }
+            else
+            {
+                _configRutinaDB.Ejercicios.Remove(exercise);
+                await _configRutinaDB.SaveChangesAsync();
+            }
         }
 
         public async Task Insert(Ejercicio exercise)
