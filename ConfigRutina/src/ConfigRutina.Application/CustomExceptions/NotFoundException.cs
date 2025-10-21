@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ConfigRutina.Application.CustomExceptions
 {
-    public class ApiError
+    public class NotFoundException : Exception
     {
-        [JsonPropertyName("message")]
-        public string? message {get; set;}
+        public int Status { get; }
+
+        public NotFoundException(string msg) : base(msg)
+        {
+            Status = 404;
+        }
     }
 }

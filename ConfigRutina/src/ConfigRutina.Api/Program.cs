@@ -1,5 +1,14 @@
-using Microsoft.EntityFrameworkCore;
+using ConfigRutina.Application.Interfaces.CategoryExcercise;
+using ConfigRutina.Application.Interfaces.Excercise;
+using ConfigRutina.Application.Interfaces.Validators;
+using ConfigRutina.Application.Services.CategoryExercise;
+using ConfigRutina.Application.Services.Exercise;
+using ConfigRutina.Application.Validators;
+using ConfigRutina.Domain.Entities;
+using ConfigRutina.Infrastructure.Commands;
 using ConfigRutina.Infrastructure.Data;
+using ConfigRutina.Infrastructure.Queries;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +31,26 @@ builder.Services.AddSwaggerGen();
 // custom
 var connectionString = builder.Configuration["ConnectionString"];
 builder.Services.AddDbContext<ConfigRutinaDB>(options => options.UseNpgsql(connectionString));
+
+// each time the dependency is requested, a new instance is created.
+builder.Services.AddTransient<IValidatorExerciseCreateRequest, ValidatorExerciseCreateRequest>();
+
+builder.Services.AddTransient<IValidatorExerciseDeleteRequest, ValidatorExerciseDeleteRequest>();
+
+builder.Services.AddTransient<IValidateExerciseUpdateRequest, ValidateExerciseUpdateRequest>();
+
+builder.Services.AddTransient<IValidatorExerciseSearchRequest, ValidatorExerciseSearchRequest>();
+builder.Services.AddTransient<IValidatorExerciseSearchByIdRequest, ValidatorExerciseSearchByIdRequest>();
+
+// a single instance for the entire application.
+builder.Services.AddScoped<IExcerciseQueryService, ExerciseQueryService>();
+builder.Services.AddScoped<IExcerciseQuery<Ejercicio>, ExerciseQuery>();
+
+builder.Services.AddScoped<IExcerciseCommandService, ExerciseCommandService>();
+builder.Services.AddScoped<IExcerciseCommand, ExerciseCommand>();
+
+builder.Services.AddScoped<ICategoryExcerciseQueryService, CategoryExerciseQueryService>();
+builder.Services.AddScoped<ICategoryExcerciseQuery<List<CategoriaEjercicio>>, CategoryExerciseQuery>();
 
 var app = builder.Build();
 
