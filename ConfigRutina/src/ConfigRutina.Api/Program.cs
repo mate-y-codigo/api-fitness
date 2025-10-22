@@ -1,8 +1,12 @@
 using ConfigRutina.Application.Interfaces.CategoryExcercise;
 using ConfigRutina.Application.Interfaces.Excercise;
+using ConfigRutina.Application.Interfaces.ExcerciseSession;
+using ConfigRutina.Application.Interfaces.TrainingPlan;
+using ConfigRutina.Application.Interfaces.TrainingSession;
 using ConfigRutina.Application.Interfaces.Validators;
 using ConfigRutina.Application.Services.CategoryExercise;
 using ConfigRutina.Application.Services.Exercise;
+using ConfigRutina.Application.Services.TrainingPlan;
 using ConfigRutina.Application.Validators;
 using ConfigRutina.Domain.Entities;
 using ConfigRutina.Infrastructure.Commands;
@@ -51,6 +55,18 @@ builder.Services.AddScoped<IExcerciseCommand, ExerciseCommand>();
 
 builder.Services.AddScoped<ICategoryExcerciseQueryService, CategoryExerciseQueryService>();
 builder.Services.AddScoped<ICategoryExcerciseQuery<List<CategoriaEjercicio>>, CategoryExerciseQuery>();
+
+// training plan dependencies
+builder.Services.AddScoped<ITrainingPlanService, TrainingPlanService>();
+
+//training Session Dependencies
+builder.Services.AddScoped<ITrainingSessionCommand, TrainingSessionCommand>();
+builder.Services.AddScoped<ITrainingSessionQuery, TrainingSessionQuery>();
+
+
+// Excercise Session Dependencies
+builder.Services.AddScoped<IExerciseSessionCommand, ExerciseSessionCommand>();
+builder.Services.AddScoped<IExerciseSessionQuery, ExerciseSessionQuery>();
 
 var app = builder.Build();
 
