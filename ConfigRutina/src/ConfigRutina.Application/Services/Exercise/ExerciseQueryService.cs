@@ -1,5 +1,4 @@
-﻿
-using ConfigRutina.Application.DTOs.Response;
+﻿using ConfigRutina.Application.DTOs.Response.Exercise;
 using ConfigRutina.Application.Interfaces.Excercise;
 using ConfigRutina.Application.Interfaces.Validators;
 using ConfigRutina.Application.Mappers;

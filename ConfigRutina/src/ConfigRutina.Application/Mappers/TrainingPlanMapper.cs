@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConfigRutina.Application.Mappers
 {
-    public class ExcerciseSessionMapper
+    public class TrainingPlanMapper
     {
     }
 }

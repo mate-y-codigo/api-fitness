@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ConfigRutina.Application.DTOs.Response
+namespace ConfigRutina.Application.DTOs.Response.Exercise
 {
     public class ExerciseResponse
     {

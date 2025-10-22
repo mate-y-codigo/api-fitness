@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConfigRutina.Application.DTOs.Response
+namespace ConfigRutina.Application.DTOs.Response.TrainingPlan
 {
     public class TrainingPlanStatusResponse
     {

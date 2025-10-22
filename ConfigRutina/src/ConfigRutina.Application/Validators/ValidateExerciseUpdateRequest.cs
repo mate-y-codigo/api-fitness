@@ -1,5 +1,5 @@
 ﻿using ConfigRutina.Application.CustomExceptions;
-using ConfigRutina.Application.DTOs.Request;
+using ConfigRutina.Application.DTOs.Request.Exercise;
 using ConfigRutina.Application.DTOs.Response;
 using ConfigRutina.Application.Interfaces.Excercise;
 using ConfigRutina.Application.Interfaces.Validators;

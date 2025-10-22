@@ -1,5 +1,6 @@
-﻿using ConfigRutina.Application.DTOs.Request;
+﻿using ConfigRutina.Application.DTOs.Request.Exercise;
 using ConfigRutina.Application.DTOs.Response;
+using ConfigRutina.Application.DTOs.Response.Exercise;
 using ConfigRutina.Domain.Entities;
 using System;
 using System.Collections.Generic;

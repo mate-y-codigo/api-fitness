@@ -23,7 +23,7 @@ namespace ConfigRutina.Infrastructure.Queries
         {
             return _configRutinaDB.SesionEntrenamientos
                 .AsNoTracking()
-                .Include(ts=> ts.PlanEntrenamientoEn)
+                .Include(ts => ts.PlanEntrenamientoEn)
                 .Where(ts => ts.Id == id)
                 .FirstOrDefault();
         }

@@ -1,5 +1,6 @@
 ﻿using ConfigRutina.Application.CustomExceptions;
-using ConfigRutina.Application.DTOs.Response;
+using ConfigRutina.Application.DTOs.Request.TrainingPlan;
+using ConfigRutina.Application.DTOs.Response.TrainingPlan;
 using ConfigRutina.Application.Services.TrainingPlan;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,10 +48,10 @@ namespace ConfigRutina.Api.Controllers
         [ProducesResponseType(typeof(ApiError), 400)]
         [ProducesResponseType(typeof(ApiError), 404)]
         [ProducesResponseType(typeof(ApiError), 409)]
-        public async Task<IActionResult> ChangeTrainingPlanStatus(string id, [FromBody] bool status) {
+        public async Task<IActionResult> ChangeTrainingPlanStatus(string id, [FromBody] UpdateTrainingPlanStatusRequest request) {
             try
             {
-                return new JsonResult(_trainingPlanService.ChangeStateTrainingPlan(id, status));
+                return new JsonResult(_trainingPlanService.ChangeStateTrainingPlan(id, request));
             }
             catch (BadRequestException ex)
             {
@@ -77,11 +78,11 @@ namespace ConfigRutina.Api.Controllers
         [ProducesResponseType(typeof(TrainingPlanResponse), 200)]
         [ProducesResponseType(typeof(ApiError), 400)]
 
-        public async Task<IActionResult> GetTrainingPlanFilter([FromQuery] string? name, bool? plantilla, string? IdEntrenador, bool? active, DateTime? date)
+        public async Task<IActionResult> GetTrainingPlanFilter([FromQuery] string? Name, bool? Plantilla, string? IdEntrenador, bool? Active, DateTime? CreateDate, DateTime? UpdateDate)
         {
             try
             {
-                return new JsonResult(_trainingPlanService.GetFilterTrainingPlan(name, plantilla, IdEntrenador, active, date));
+                return new JsonResult(_trainingPlanService.GetFilterTrainingPlan(Name, Plantilla, IdEntrenador, Active, CreateDate,UpdateDate));
             }
             catch (BadRequestException ex)
             {
@@ -102,11 +103,11 @@ namespace ConfigRutina.Api.Controllers
 
 
         //preguntar si se espera del body las sesiones o se asignan en service
-        public async Task<IActionResult> CreateTrainingPlan([FromBody]string IdTrainer,string name,string description,bool plantilla)
+        public async Task<IActionResult> CreateTrainingPlan([FromBody] CreateTrainingPlanRequest request)
         {
             try
             {
-                return new JsonResult(_trainingPlanService.CreateTrainingPLan(IdTrainer,name,description,plantilla));
+                return new JsonResult(_trainingPlanService.CreateTrainingPLan(request));
             }
             catch (BadRequestException ex)
             {

@@ -10,6 +10,6 @@ namespace ConfigRutina.Application.Interfaces.ExcerciseSession
     public interface IExerciseSessionQuery
     {
         Task<EjercicioSesion> GetById(Guid id);
-        Task<List<EjercicioSesion>> GetExerciseSessions(Guid idTS);
+        Task<List<EjercicioSesion>> GetExerciseSessionsByTrainingSession(Guid idTS);
     }
 }

@@ -1,4 +1,4 @@
-﻿using ConfigRutina.Application.DTOs.Response;
+﻿using ConfigRutina.Application.DTOs.Response.Exercise;
 using System;
 using System.Collections.Generic;
 using System.Linq;

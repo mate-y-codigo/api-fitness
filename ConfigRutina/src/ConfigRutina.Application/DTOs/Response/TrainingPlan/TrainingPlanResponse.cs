@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ConfigRutina.Application.DTOs.Response.TrainingSession;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConfigRutina.Application.DTOs.Response
+namespace ConfigRutina.Application.DTOs.Response.TrainingPlan
 {
     public class TrainingPlanResponse
     {

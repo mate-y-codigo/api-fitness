@@ -28,13 +28,12 @@ namespace ConfigRutina.Infrastructure.Queries
                 .FirstOrDefault();
         }
 
-
-        // trae todos las sesiones de entrenamiento por sesion de entrenamiento
-        public async Task<List<EjercicioSesion>> GetExerciseSessions(Guid idTS)
+        // trae todos ejercicio de entrenamiento por sesion de entrenamiento
+        public async Task<List<EjercicioSesion>> GetExerciseSessionsByTrainingSession(Guid idTS)
         {
             return _configRutinaDB.EjercicioSesiones.AsNoTracking()
                 .Include(es => es.EjercicioEn)
-                .Include(es=>es.SesionEntrenamientoEn)
+                .Include(es => es.SesionEntrenamientoEn)
                 .Where(es => es.IdSesionEntrenamiento == idTS).ToList();
         }
     }
